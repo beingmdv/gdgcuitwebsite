@@ -1,12 +1,13 @@
 "use client";
 // src/components/Home.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { ArrowRight, Code, Users, Lightbulb, Network, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import Button from "./ui/Button";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { GeometricBackground } from "./GeometricBackground";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import eventsData from "@/data/events.json";
 
 export default function Home() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function Home() {
   const [projectCount, setProjectCount] = useState(0);
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
 
+  // Animated counters (same as before)
   useEffect(() => {
     const duration = 2000;
     const targetMembers = 500;
@@ -43,40 +45,36 @@ export default function Home() {
     { title: "Community", description: "Connect with like-minded developers and grow your network.", icon: Network, color: "#34A853" },
   ];
 
-  const upcomingEvents = [
-    {
-      title: "Intro to Cloud with Google Cloud",
-      date: "12 Dec 2025",
-      description: "Hands-on workshop introducing cloud fundamentals and GCP credits.",
-      location: "UIT Campus, Hall A",
-      image: "https://images.unsplash.com/photo-1570286424573-5795ac9db869?w=1080&q=80",
-    },
-    {
-      title: "Web Development Bootcamp",
-      date: "20 Dec 2025",
-      description: "Intensive 3-day bootcamp covering React, Node.js, and deployment.",
-      location: "UIT Campus, Computer Lab",
-      image: "https://images.unsplash.com/photo-1695066964145-245927509533?w=1080&q=80",
-    },
-    {
-      title: "AI/ML Workshop Series",
-      date: "15 Jan 2026",
-      description: "Explore machine learning fundamentals and build your first ML model.",
-      location: "UIT Campus, Auditorium",
-      image: "https://images.unsplash.com/photo-1640163561346-7778a2edf353?w=1080&q=80",
-    },
-  ];
+  // derive upcoming events from JSON data
+  const upcomingEvents = useMemo(() => {
+    return eventsData.filter((e) => e.status === "upcoming");
+  }, []);
 
+  // partners (unchanged)
   const partners = ["Google Cloud", "GitHub", "JetBrains", "Postman", "MongoDB"];
 
-  const nextEvent = () => setCurrentEventIndex(prev => (prev + 1) % upcomingEvents.length);
-  const prevEvent = () => setCurrentEventIndex(prev => (prev - 1 + upcomingEvents.length) % upcomingEvents.length);
+  // navigation for carousel uses dynamic length
+  const nextEvent = () => {
+    if (upcomingEvents.length === 0) return;
+    setCurrentEventIndex((prev) => (prev + 1) % upcomingEvents.length);
+  };
+  const prevEvent = () => {
+    if (upcomingEvents.length === 0) return;
+    setCurrentEventIndex((prev) => (prev - 1 + upcomingEvents.length) % upcomingEvents.length);
+  };
+
   const handleNavClick = (page) => {
-    // route to named pages (adjust paths to your app)
     if (page === "home") router.push("/");
     else router.push(`/${page}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  // keep index safe if events array changes length
+  useEffect(() => {
+    if (currentEventIndex >= upcomingEvents.length) {
+      setCurrentEventIndex(0);
+    }
+  }, [upcomingEvents.length, currentEventIndex]);
 
   return (
     <div className="min-h-screen relative">
@@ -110,9 +108,10 @@ export default function Home() {
 
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="relative">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  {/* if no upcoming events, fallback to a placeholder */}
                   <ImageWithFallback
-                    src={upcomingEvents[1].image}
-                    alt="Students collaborating on coding projects"
+                    src={upcomingEvents.length ? upcomingEvents[currentEventIndex].image : "https://via.placeholder.com/1200x700?text=No+Events"}
+                    alt={upcomingEvents.length ? upcomingEvents[currentEventIndex].title : "No upcoming events"}
                     className="w-full h-auto"
                   />
                 </div>
@@ -176,7 +175,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Events carousel */}
+        {/* Events carousel (sourced from JSON) */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
@@ -185,38 +184,46 @@ export default function Home() {
             </motion.div>
 
             <div className="relative max-w-4xl mx-auto">
-              <motion.div key={currentEventIndex} className="bg-gradient-to-br from-blue-50 to-white rounded-2xl overflow-hidden shadow-xl" initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-                  <div className="relative h-64 md:h-auto">
-                    <ImageWithFallback src={upcomingEvents[currentEventIndex].image} alt={upcomingEvents[currentEventIndex].title} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="p-8 flex flex-col justify-center">
-                    <div className="inline-block px-3 py-1 bg-[#4285F4] text-white rounded-full text-sm mb-4 w-fit">
-                      {upcomingEvents[currentEventIndex].date}
+              {upcomingEvents.length === 0 ? (
+                <div className="text-center py-16">No upcoming events</div>
+              ) : (
+                <>
+                  <motion.div key={currentEventIndex} className="bg-gradient-to-br from-blue-50 to-white rounded-2xl overflow-hidden shadow-xl" initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                      <div className="relative h-64 md:h-auto">
+                        <ImageWithFallback src={upcomingEvents[currentEventIndex].image} alt={upcomingEvents[currentEventIndex].title} className="w-full h-full object-cover" />
+                      </div>
+                      <div className="p-8 flex flex-col justify-center">
+                        <div className="inline-block px-3 py-1 bg-[#4285F4] text-white rounded-full text-sm mb-4 w-fit">
+                          {upcomingEvents[currentEventIndex].date}
+                        </div>
+                        <h3 className="text-gray-900 mb-3 text-xl font-semibold">{upcomingEvents[currentEventIndex].title}</h3>
+                        <p className="text-gray-600 mb-4">{upcomingEvents[currentEventIndex].description}</p>
+                        <div className="flex items-center text-gray-500 text-sm mb-6">
+                          <MapPin className="w-4 h-4 mr-2" />
+                          {upcomingEvents[currentEventIndex].location}
+                        </div>
+                        <Button className="bg-[#4285F4] text-white w-fit" onClick={() => router.push('/events')}>
+                          Register Now
+                        </Button>
+                      </div>
                     </div>
-                    <h3 className="text-gray-900 mb-3 text-xl font-semibold">{upcomingEvents[currentEventIndex].title}</h3>
-                    <p className="text-gray-600 mb-4">{upcomingEvents[currentEventIndex].description}</p>
-                    <div className="flex items-center text-gray-500 text-sm mb-6">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      {upcomingEvents[currentEventIndex].location}
-                    </div>
-                    <Button className="bg-[#4285F4] text-white w-fit">Register Now</Button>
+                  </motion.div>
+
+                  <button onClick={prevEvent} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-3 shadow-lg hover:scale-110">
+                    <ChevronLeft className="w-6 h-6 text-gray-700" />
+                  </button>
+                  <button onClick={nextEvent} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-3 shadow-lg hover:scale-110">
+                    <ChevronRight className="w-6 h-6 text-gray-700" />
+                  </button>
+
+                  <div className="flex justify-center gap-2 mt-6">
+                    {upcomingEvents.map((_, i) => (
+                      <button key={i} onClick={() => setCurrentEventIndex(i)} className={`w-2 h-2 rounded-full transition-all duration-300 ${i===currentEventIndex ? 'bg-[#4285F4] w-8' : 'bg-gray-300'}`} aria-label={`Go to ${i+1}`} />
+                    ))}
                   </div>
-                </div>
-              </motion.div>
-
-              <button onClick={prevEvent} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-3 shadow-lg hover:scale-110">
-                <ChevronLeft className="w-6 h-6 text-gray-700" />
-              </button>
-              <button onClick={nextEvent} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-3 shadow-lg hover:scale-110">
-                <ChevronRight className="w-6 h-6 text-gray-700" />
-              </button>
-
-              <div className="flex justify-center gap-2 mt-6">
-                {upcomingEvents.map((_, i) => (
-                  <button key={i} onClick={() => setCurrentEventIndex(i)} className={`w-2 h-2 rounded-full transition-all duration-300 ${i===currentEventIndex ? 'bg-[#4285F4] w-8' : 'bg-gray-300'}`} aria-label={`Go to ${i+1}`} />
-                ))}
-              </div>
+                </>
+              )}
             </div>
           </div>
         </section>

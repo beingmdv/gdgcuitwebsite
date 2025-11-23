@@ -1,5 +1,4 @@
 "use client";
-// src/components/Navbar.jsx
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/Button";
@@ -15,35 +14,88 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const pages = ["home", "events", "projects", "join", "contact"];
+  const pages = [
+    "home",
+    "team",
+    "events",
+    "resources",
+    "join",
+    "contact",
+  ];
+
+  const handleNav = (page) => {
+    window.location.href = `/${page === "home" ? "" : page}`;
+  };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all ${isScrolled ? "bg-white/90 shadow-sm backdrop-blur-md" : "bg-transparent"}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=60" alt="logo" className="w-10 h-10 rounded-md object-cover" />
-          <span className="font-semibold">GDGC UIT</span>
+    <nav
+      className={`fixed w-full z-50 transition-all ${
+        isScrolled
+          ? "bg-white/90 shadow-sm backdrop-blur-md"
+          : "bg-white/95 backdrop-blur-md"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <button
+          onClick={() => handleNav("home")}
+          className="flex items-center gap-3 group"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=60"
+            alt="logo"
+            className="w-12 h-12 rounded-md object-cover"
+          />
+          <div className="hidden sm:block">
+            <div className="font-semibold text-gray-900">
+              <span style={{ color: "#4285F4" }}>G</span>
+              <span style={{ color: "#EA4335" }}>D</span>
+              <span style={{ color: "#FBBC05" }}>G</span>
+              <span style={{ color: "#34A853" }}>C</span>
+              {" "}
+              <span className="text-gray-700">UIT-RGPV</span>
+            </div>
+            <div className="text-xs text-gray-500">Bhopal</div>
+          </div>
+        </button>
+
+        <div className="hidden md:flex items-center gap-1">
+          {pages.map((p) => (
+            <button
+              key={p}
+              onClick={() => handleNav(p)}
+              className="relative px-4 py-2 text-sm text-gray-700 hover:text-[#4285F4] transition"
+            >
+              {p[0].toUpperCase() + p.slice(1)}
+            </button>
+          ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-6">
-          {pages.map((p) => (
-            <button key={p} className="text-sm text-gray-700">{p[0].toUpperCase() + p.slice(1)}</button>
-          ))}
-          <Button onClick={() => window.location.href = "/join"}>Join</Button>
+        <div className="hidden md:block">
+          <Button onClick={() => handleNav("join")}>Join Us</Button>
         </div>
 
         <div className="md:hidden">
-          <button onClick={() => setOpen(v => !v)} className="p-2 rounded-md">
+          <button onClick={() => setOpen(!open)} className="p-2">
             {open ? <X /> : <Menu />}
           </button>
         </div>
       </div>
 
       {open && (
-        <div className="md:hidden bg-white/95 px-4 pb-4 border-t">
+        <div className="md:hidden bg-white border-t px-4 pb-4 shadow-lg">
           <div className="flex flex-col gap-2">
-            {pages.map((p) => <button key={p} className="py-2 text-left">{p[0].toUpperCase() + p.slice(1)}</button>)}
-            <div className="mt-3"><Button className="w-full" onClick={() => window.location.href = "/join"}>Join</Button></div>
+            {pages.map((p) => (
+              <button
+                key={p}
+                onClick={() => handleNav(p)}
+                className="py-3 text-left text-gray-700 hover:text-[#4285F4]"
+              >
+                {p[0].toUpperCase() + p.slice(1)}
+              </button>
+            ))}
+            <Button className="mt-2 w-full" onClick={() => handleNav("join")}>
+              Join Us
+            </Button>
           </div>
         </div>
       )}

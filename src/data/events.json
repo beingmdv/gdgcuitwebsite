@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "title": "Intro to Cloud with Google Cloud",
+    "date": "12 Dec 2025",
+    "type": "workshop",
+    "description": "Hands-on workshop introducing cloud fundamentals and GCP credits. Learn about cloud architecture, deployment, and scalability.",
+    "location": "UIT Campus, Hall A",
+    "attendees": 80,
+    "status": "upcoming",
+    "image": "https://images.unsplash.com/photo-1570286424573-5795ac9db869?w=1080&q=80"
+  },
+  {
+    "id": 2,
+    "title": "Web Development Bootcamp",
+    "date": "20 Dec 2025",
+    "type": "bootcamp",
+    "description": "Intensive 3-day bootcamp covering React, Node.js, and deployment. Build a full-stack application from scratch.",
+    "location": "UIT Campus, Computer Lab",
+    "attendees": 60,
+    "status": "upcoming",
+    "image": "https://images.unsplash.com/photo-1695066964145-245927509533?w=1080&q=80"
+  },
+  {
+    "id": 3,
+    "title": "AI/ML Workshop Series",
+    "date": "15 Jan 2026",
+    "type": "workshop",
+    "description": "Explore machine learning fundamentals and build your first ML model using TensorFlow and scikit-learn.",
+    "location": "UIT Campus, Auditorium",
+    "attendees": 100,
+    "status": "upcoming",
+    "image": "https://images.unsplash.com/photo-1640163561346-7778a2edf353?w=1080&q=80"
+  },
+  {
+    "id": 4,
+    "title": "Hackathon: Build for Social Good",
+    "date": "20 Oct 2025",
+    "type": "hackathon",
+    "description": "48-hour campus hackathon focused on creating technology solutions for social impact.",
+    "location": "UIT Campus",
+    "attendees": 120,
+    "status": "completed",
+    "image": "https://images.unsplash.com/photo-1640163561346-7778a2edf353?w=1080&q=80",
+    "stats": {
+      "participants": 120,
+      "projects": 24,
+      "duration": "48 hours"
+    },
+    "resources": ["Event Slides", "Project Gallery", "Recording"]
+  },
+  {
+    "id": 5,
+    "title": "Git & GitHub Essentials",
+    "date": "5 Oct 2025",
+    "type": "workshop",
+    "description": "Learn version control basics, collaboration workflows, and open source contribution.",
+    "location": "UIT Campus, Computer Lab",
+    "attendees": 90,
+    "status": "completed",
+    "image": "https://images.unsplash.com/photo-1695066964145-245927509533?w=1080&q=80",
+    "stats": {
+      "participants": 90,
+      "duration": "3 hours"
+    },
+    "resources": ["Workshop Slides", "Code Examples"]
+  },
+  {
+    "id": 6,
+    "title": "Flutter Mobile Development",
+    "date": "15 Sep 2025",
+    "type": "bootcamp",
+    "description": "2-day intensive bootcamp on building cross-platform mobile apps with Flutter.",
+    "location": "UIT Campus, Hall B",
+    "status": "completed",
+    "image": "https://images.unsplash.com/photo-1570286424573-5795ac9db869?w=1080&q=80",
+    "stats": {
+      "participants": 75,
+      "projects": 15,
+      "duration": "2 days"
+    },
+    "resources": ["Bootcamp Material", "Project Submissions"]
+  },
+  {
+    "id": 7,
+    "title": "Tech Talk: Career in Tech",
+    "date": "1 Sep 2025",
+    "type": "techTalk",
+    "description": "Industry experts share insights on building a successful career in technology.",
+    "location": "UIT Campus, Auditorium",
+    "status": "completed",
+    "image": "https://images.unsplash.com/photo-1640163561346-7778a2edf353?w=1080&q=80",
+    "stats": {
+      "participants": 150,
+      "duration": "2 hours"
+    },
+    "resources": ["Recording", "Q&A Summary"]
+  },
+  {
+    "id": 8,
+    "title": "DevOps & CI/CD Workshop",
+    "date": "10 Aug 2025",
+    "type": "workshop",
+    "description": "Hands-on session on continuous integration, deployment, and DevOps best practices.",
+    "location": "UIT Campus, Computer Lab",
+    "status": "completed",
+    "image": "https://images.unsplash.com/photo-1695066964145-245927509533?w=1080&q=80",
+    "stats": {
+      "participants": 65,
+      "duration": "4 hours"
+    },
+    "resources": ["Workshop Materials", "Code Repository"]
+  }
+]

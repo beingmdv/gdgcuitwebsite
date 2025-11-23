@@ -1,0 +1,62 @@
+[
+  {
+    "id": 5,
+    "name": "Arjun Sharma",
+    "role": "design",
+    "category": ["all", "core"],
+    "bio": "Final year CS student passionate about community building and tech education.",
+    "responsibilities": "Overall chapter coordination and strategic planning",
+    "email": "arjun@gdgc.dev",
+    "linkedin": "#",
+    "github": "#",
+    "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun"
+  },
+  {
+    "id": 4,
+    "name": "Arjun Sharma",
+    "role": "Lead",
+    "category": ["all", "core"],
+    "bio": "Final year CS student passionate about community building and tech education.",
+    "responsibilities": "Overall chapter coordination and strategic planning",
+    "email": "arjun@gdgc.dev",
+    "linkedin": "#",
+    "github": "#",
+    "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun"
+  },
+  {
+    "id": 1,
+    "name": "Arjun Sharma",
+    "role": "Lead",
+    "category": ["all", "technical"],
+    "bio": "Final year CS student passionate about community building and tech education.",
+    "responsibilities": "Overall chapter coordination and strategic planning",
+    "email": "arjun@gdgc.dev",
+    "linkedin": "#",
+    "github": "#",
+    "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun"
+  },
+  {
+    "id": 6,
+    "name": "Arjun Sharma",
+    "role": "Technical",
+    "category": ["all", "operational"],
+    "bio": "Final year CS student passionate about community building and tech education.",
+    "responsibilities": "Overall chapter coordination and strategic planning",
+    "email": "arjun@gdgc.dev",
+    "linkedin": "#",
+    "github": "#",
+    "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun"
+  },
+  {
+    "id": 3,
+    "name": "Priya Verma",
+    "role": "Co-Lead",
+    "category": ["all", "design"],
+    "bio": "Tech enthusiast and organizer with 2+ years of community experience.",
+    "responsibilities": "Event coordination and member engagement",
+    "email": "priya@gdgc.dev",
+    "linkedin": "#",
+    "github": "#",
+    "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya"
+  }
+]

@@ -1,16 +1,18 @@
 "use client";
-// src/components/ImageWithFallback.jsx
 import React, { useState } from "react";
 
-export function ImageWithFallback({ src, alt = "", className = "", fallback = "https://via.placeholder.com/800x600?text=Image", ...props }) {
-  const [ok, setOk] = useState(true);
+export default function ImageWithFallback({ src, fallback = "https://via.placeholder.com/800x600?text=Image", alt = "", className = "", ...props }) {
+  const [current, setCurrent] = useState(src || fallback);
+
   return (
-    // using regular img keeps it simple — swap to next/image later if you add remote domains
+    // keep layout stable by passing className through; fallback will show if original fails
     <img
-      src={ok ? src : fallback}
+      src={current}
       alt={alt}
+      onError={() => {
+        if (current !== fallback) setCurrent(fallback);
+      }}
       className={className}
-      onError={() => setOk(false)}
       {...props}
     />
   );

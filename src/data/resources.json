@@ -1,0 +1,187 @@
+[
+  {
+    "id": 1,
+    "title": "MDN Web Docs",
+    "description": "Comprehensive documentation for HTML, CSS, and JavaScript",
+    "category": "webdev",
+    "type": "documentation",
+    "link": "https://developer.mozilla.org",
+    "level": "beginner",
+    "provider": "Mozilla",
+    "color": "#4285F4"
+  },
+  {
+    "id": 2,
+    "title": "React Official Documentation",
+    "description": "Learn React from the official docs with interactive examples",
+    "category": "webdev",
+    "type": "documentation",
+    "link": "https://react.dev",
+    "level": "intermediate",
+    "provider": "React Team",
+    "color": "#4285F4"
+  },
+  {
+    "id": 3,
+    "title": "JavaScript.info",
+    "description": "Modern JavaScript tutorial from basics to advanced",
+    "category": "webdev",
+    "type": "tutorial",
+    "link": "https://javascript.info",
+    "level": "beginner",
+    "provider": "javascript.info",
+    "color": "#4285F4"
+  },
+
+  {
+    "id": 6,
+    "title": "LeetCode",
+    "description": "Practice coding problems and prepare for interviews",
+    "category": "dsa",
+    "type": "tutorial",
+    "link": "https://leetcode.com",
+    "level": "intermediate",
+    "provider": "LeetCode",
+    "color": "#EA4335"
+  },
+  {
+    "id": 9,
+    "title": "NeetCode - DSA videos",
+    "description": "Curated list of coding interview questions with video explanations",
+    "category": "dsa",
+    "type": "video",
+    "link": "https://neetcode.io",
+    "level": "intermediate",
+    "provider": "NeetCode",
+    "color": "#EA4335"
+  },
+
+  {
+    "id": 11,
+    "title": "Machine Learning by Andrew Ng (Coursera)",
+    "description": "Classic ML course covering algorithms and fundamentals",
+    "category": "aiml",
+    "type": "course",
+    "link": "https://coursera.org/learn/machine-learning",
+    "level": "beginner",
+    "provider": "Coursera",
+    "color": "#FBBC05"
+  },
+
+  {
+    "id": 16,
+    "title": "CryptoZombies",
+    "description": "Learn Solidity by building a crypto-collectibles game",
+    "category": "web3",
+    "type": "tutorial",
+    "link": "https://cryptozombies.io",
+    "level": "beginner",
+    "provider": "CryptoZombies",
+    "color": "#34A853"
+  },
+
+  {
+    "id": 21,
+    "title": "React Native Official Tutorial",
+    "description": "Build mobile apps with React Native",
+    "category": "mobile",
+    "type": "documentation",
+    "link": "https://reactnative.dev/docs/tutorial",
+    "level": "intermediate",
+    "provider": "React Native",
+    "color": "#4285F4"
+  },
+
+  {
+    "id": 24,
+    "title": "Google Cloud Skills Boost",
+    "description": "Hands-on labs and courses for Google Cloud",
+    "category": "cloud",
+    "type": "course",
+    "link": "https://cloudskillsboost.google",
+    "level": "beginner",
+    "provider": "Google Cloud",
+    "color": "#EA4335"
+  },
+
+  {
+    "id": 27,
+    "title": "OWASP Top 10",
+    "description": "Learn about the most critical web application security risks",
+    "category": "cybersecurity",
+    "type": "documentation",
+    "link": "https://owasp.org/www-project-top-ten",
+    "level": "intermediate",
+    "provider": "OWASP",
+    "color": "#FBBC05"
+  },
+
+  {
+    "id": 30,
+    "title": "Figma Learn",
+    "description": "Official Figma tutorials and design resources",
+    "category": "uiux",
+    "type": "tutorial",
+    "link": "https://figma.com/resources/learn-design",
+    "level": "beginner",
+    "provider": "Figma",
+    "color": "#34A853"
+  },
+
+ 
+  {
+    "id": 101,
+    "title": "React Crash Course 2023 - Traversy Media",
+    "description": "A practical React crash course for building modern web apps (beginner → intermediate).",
+    "category": "webdev",
+    "type": "video",
+    "link": "https://www.youtube.com/watch?v=w7ejDZ8SWv8",
+    "level": "beginner",
+    "provider": "Traversy Media",
+    "color": "#4285F4"
+  },
+  {
+    "id": 102,
+    "title": "CS50's Introduction to Computer Science (Harvard) - Full Course",
+    "description": "Complete CS50 lecture series — great for fundamentals and problem solving.",
+    "category": "dsa",
+    "type": "video",
+    "link": "https://www.youtube.com/watch?v=8mAITcNt710",
+    "level": "beginner",
+    "provider": "Harvard",
+    "color": "#EA4335"
+  },
+  {
+    "id": 103,
+    "title": "freeCodeCamp - Data Structures & Algorithms (Full Course)",
+    "description": "A full guide to DSA with hands-on examples and code walkthroughs.",
+    "category": "dsa",
+    "type": "video",
+    "link": "https://www.youtube.com/watch?v=tWVWeAqZ0WU",
+    "level": "intermediate",
+    "provider": "freeCodeCamp",
+    "color": "#EA4335"
+  },
+  {
+    "id": 104,
+    "title": "Deep Learning with PyTorch - freeCodeCamp (Full Course)",
+    "description": "End-to-end deep learning workshop using PyTorch.",
+    "category": "aiml",
+    "type": "video",
+    "link": "https://www.youtube.com/watch?v=GIsg-ZUy0MY",
+    "level": "intermediate",
+    "provider": "freeCodeCamp",
+    "color": "#FBBC05"
+  },
+  {
+    "id": 105,
+    "title": "Net Ninja - Modern JavaScript Tutorial",
+    "description": "Short, clear JS tutorials and playlists for front-end dev.",
+    "category": "webdev",
+    "type": "video",
+    "link": "https://www.youtube.com/watch?v=qoSksQ4s_hg",
+    "level": "beginner",
+    "provider": "The Net Ninja",
+    "color": "#4285F4"
+  }
+]

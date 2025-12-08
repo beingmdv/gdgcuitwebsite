@@ -3,8 +3,10 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { ArrowRight, Code, Users, Lightbulb, Network, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import Button from "./ui/Button";
-import { ImageWithFallback } from "./ImageWithFallback";
-import { GeometricBackground } from "./GeometricBackground";
+
+import ImageWithFallback from "./ImageWithFallback";
+import GeometricBackground from "./GeometricBackground";
+
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import eventsData from "@/data/events.json";

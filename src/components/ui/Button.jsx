@@ -1,25 +1,20 @@
 "use client";
-// src/components/ui/Button.jsx
 import React from "react";
 
-export default function Button({ children, className = "", variant, ...props }) {
-  const base = "inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-transform";
-  if (variant === "outline") {
-    return (
-      <button
-        {...props}
-        className={`${base} border bg-transparent ${className}`}
-      >
-        {children}
-      </button>
-    );
+export default function Button({ children, className = "", asChild = false, ...props }) {
+  // asChild support: if asChild is true and children is an anchor, we just pass props to it.
+  const base = "inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium shadow-sm transition-transform duration-150";
+  const defaultStyle = "bg-[#4285F4] hover:bg-[#3367D6] text-white";
+
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(children, {
+      className: `${base} ${defaultStyle} ${className} ${children.props.className ?? ""}`.trim(),
+      ...props,
+    });
   }
-  // default solid
+
   return (
-    <button
-      {...props}
-      className={`${base} bg-[#4285F4] text-white ${className}`}
-    >
+    <button {...props} className={`${base} ${defaultStyle} ${className}`}>
       {children}
     </button>
   );

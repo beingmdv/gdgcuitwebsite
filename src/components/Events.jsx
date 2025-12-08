@@ -5,8 +5,8 @@ import eventsData from "@/data/events.json";
 import { Calendar, MapPin, Users, Search, X, Download, ExternalLink } from "lucide-react";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
-import { ImageWithFallback } from "./ImageWithFallback";
-import { GeometricBackground } from "./GeometricBackground";
+import ImageWithFallback from "./ImageWithFallback";
+import GeometricBackground from "./GeometricBackground";
 import { motion, AnimatePresence } from "framer-motion";
 
 const eventTypes = [

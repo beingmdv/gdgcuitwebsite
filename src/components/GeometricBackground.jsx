@@ -1,20 +1,15 @@
 "use client";
-// src/components/GeometricBackground.jsx
 import React from "react";
 
-export function GeometricBackground({ variant = "white" }) {
-  // simple decorative SVG background that matches the style
+/**
+ * Minimal decorative background component.
+ * Adjust gradients/shapes to match your Figma later.
+ */
+export default function GeometricBackground({ variant = "white" }) {
   return (
-    <div aria-hidden className="absolute inset-0 -z-0 pointer-events-none">
-      <svg className="w-full h-full" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="g" x1="0" x2="1">
-            <stop offset="0%" stopColor="#f8fafc" />
-            <stop offset="100%" stopColor="#ffffff" />
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#g)" />
-      </svg>
+    <div aria-hidden className="absolute inset-0 pointer-events-none -z-10">
+      <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-gradient-to-br from-[#4285F4]/10 to-transparent blur-3xl" />
+      <div className="absolute -bottom-28 -right-20 w-80 h-80 rounded-lg bg-gradient-to-tr from-[#34A853]/10 to-transparent blur-2xl" />
     </div>
   );
 }
